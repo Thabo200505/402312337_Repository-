@@ -2,4 +2,7 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="ingredient_have">#4CAF50</color>
+    <color name="ingredient_missing">#F44336</color>
+    <color name="expiry_soon">#E65100</color>
 </resources>

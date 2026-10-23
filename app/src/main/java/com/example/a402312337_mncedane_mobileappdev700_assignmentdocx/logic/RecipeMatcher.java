@@ -82,4 +82,21 @@ public class RecipeMatcher {
         }
         return missing;
     }
+
+    /** True if the pantry covers this ingredient (all lines of the recipe using it are summed). */
+    public static boolean isIngredientAvailable(RecipeIngredient target,
+                                                Recipe recipe,
+                                                List<PantryItem> pantry) {
+        Map<String, Double> stock = buildPantryStock(pantry);
+        String k = key(target.getName(), target.getUnit());
+
+        double needed = 0;
+        for (RecipeIngredient ri : recipe.getIngredients()) {
+            if (key(ri.getName(), ri.getUnit()).equals(k)) {
+                needed += UnitConverter.toBase(ri.getQuantity(), ri.getUnit());
+            }
+        }
+        double have = stock.containsKey(k) ? stock.get(k) : 0;
+        return have + EPS >= needed;
+    }
 }

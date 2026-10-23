@@ -62,10 +62,34 @@ public class PantryListActivity extends AppCompatActivity implements PantryAdapt
 
     private void loadPantry() {
         ArrayList<PantryItem> items = dataSource.getAllPantryItems();
+
+        boolean alerts = new SettingsManager(this).isExpiryAlertsEnabled();
+        adapter.setAlertsEnabled(alerts);
         adapter.setItems(items);
+
         boolean empty = items.isEmpty();
         tvEmpty.setVisibility(empty ? View.VISIBLE : View.GONE);
         rvPantry.setVisibility(empty ? View.GONE : View.VISIBLE);
+
+        // expiry banner
+        TextView banner = findViewById(R.id.tvExpiryBanner);
+        int expired = 0, soon = 0;
+        if (alerts) {
+            for (PantryItem p : items) {
+                if (ExpiryHelper.isExpired(p.getExpiryDate())) expired++;
+                else if (ExpiryHelper.isExpiringSoon(p.getExpiryDate())) soon++;
+            }
+        }
+        if (expired + soon > 0) {
+            String text = "";
+            if (expired > 0) text += expired + (expired == 1 ? " item has" : " items have") + " expired";
+            if (expired > 0 && soon > 0) text += ", ";
+            if (soon > 0) text += soon + (soon == 1 ? " item expires" : " items expire") + " within 3 days";
+            banner.setText(text);
+            banner.setVisibility(View.VISIBLE);
+        } else {
+            banner.setVisibility(View.GONE);
+        }
     }
 
     @Override

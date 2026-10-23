@@ -81,6 +81,10 @@ public class AddEditPantryActivity extends AppCompatActivity {
             fillForm(existingItem);
         } else {
             setTitle("Add Ingredient");
+            // pre-select the user's preferred unit (from Settings)
+            String defaultUnit = new SettingsManager(this).getDefaultUnit();
+            int pos = unitAdapter.getPosition(defaultUnit);
+            if (pos >= 0) spUnit.setSelection(pos);
         }
 
         // listeners
