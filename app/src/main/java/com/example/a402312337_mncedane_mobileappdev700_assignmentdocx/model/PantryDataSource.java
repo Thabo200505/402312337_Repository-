@@ -1,5 +1,6 @@
 package com.example.a402312337_mncedane_mobileappdev700_assignmentdocx.model;
 
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;

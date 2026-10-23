@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="unit_options">
+        <item>g</item>
+        <item>kg</item>
+        <item>ml</item>
+        <item>l</item>
+        <item>tsp</item>
+        <item>tbsp</item>
+        <item>cup</item>
+        <item>pcs</item>
+        <item>oz</item>
+        <item>lb</item>
+    </string-array>
+
+    <!-- Same names used in the 20 seeded recipes -->
+    <string-array name="ingredient_suggestions">
+        <item>egg</item>
+        <item>bread</item>
+        <item>butter</item>
+        <item>flour</item>
+        <item>milk</item>
+        <item>cooking oil</item>
+        <item>cheese</item>
+        <item>pasta</item>
+        <item>tomato</item>
+        <item>onion</item>
+        <item>garlic</item>
+        <item>olive oil</item>
+        <item>rice</item>
+        <item>carrot</item>
+        <item>potato</item>
+        <item>salt</item>
+        <item>banana</item>
+        <item>oats</item>
+        <item>honey</item>
+        <item>sugar</item>
+        <item>tuna</item>
+        <item>mayonnaise</item>
+        <item>chicken</item>
+        <item>bell pepper</item>
+        <item>lemon</item>
+        <item>baked beans</item>
+    </string-array>
+</resources>

@@ -61,4 +61,25 @@ public class RecipeMatcher {
         }
         return result;
     }
+
+    /** Names of the ingredients this recipe is missing (or doesn't have enough of). */
+    public static List<String> getMissingNames(Recipe recipe, List<PantryItem> pantry) {
+        Map<String, Double> stock = buildPantryStock(pantry);
+
+        Map<String, Double> needed = new LinkedHashMap<>();
+        Map<String, String> display = new HashMap<>();
+        for (RecipeIngredient ri : recipe.getIngredients()) {
+            String k = key(ri.getName(), ri.getUnit());
+            double base = UnitConverter.toBase(ri.getQuantity(), ri.getUnit());
+            needed.put(k, needed.containsKey(k) ? needed.get(k) + base : base);
+            if (!display.containsKey(k)) display.put(k, ri.getName());
+        }
+
+        List<String> missing = new ArrayList<>();
+        for (Map.Entry<String, Double> e : needed.entrySet()) {
+            double have = stock.containsKey(e.getKey()) ? stock.get(e.getKey()) : 0;
+            if (have + EPS < e.getValue()) missing.add(display.get(e.getKey()));
+        }
+        return missing;
+    }
 }
