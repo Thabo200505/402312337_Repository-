@@ -1,7 +1,9 @@
 package com.example.a402312337_mncedane_mobileappdev700_assignmentdocx.logic;
+import com.example.a402312337_mncedane_mobileappdev700_assignmentdocx.model.PantryItem;
+import com.example.a402312337_mncedane_mobileappdev700_assignmentdocx.model.Recipe;
+import com.example.a402312337_mncedane_mobileappdev700_assignmentdocx.model.RecipeIngredient;
 
 import java.util.*;
-
 public class RecipeMatcher {
 
     private static final double EPS = 1e-9;
